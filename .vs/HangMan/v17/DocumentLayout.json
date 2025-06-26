@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Swastik.Toprani\\source\\repos\\HangMan\\",
+  "WorkspaceRootPath": "D:\\HangMan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{472BFEE3-014A-4EDC-8E74-2C93DF9F4FAC}|HangMan\\HangMan.vcxproj|C:\\Users\\Swastik.Toprani\\source\\repos\\HangMan\\HangMan\\HangMan.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{472BFEE3-014A-4EDC-8E74-2C93DF9F4FAC}|HangMan\\HangMan.vcxproj|D:\\HangMan\\HangMan\\HangMan.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{472BFEE3-014A-4EDC-8E74-2C93DF9F4FAC}|HangMan\\HangMan.vcxproj|solutionrelative:HangMan\\HangMan.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -18,17 +18,17 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "HangMan.cpp",
-              "DocumentMoniker": "C:\\Users\\Swastik.Toprani\\source\\repos\\HangMan\\HangMan\\HangMan.cpp",
+              "DocumentMoniker": "D:\\HangMan\\HangMan\\HangMan.cpp",
               "RelativeDocumentMoniker": "HangMan\\HangMan.cpp",
-              "ToolTip": "C:\\Users\\Swastik.Toprani\\source\\repos\\HangMan\\HangMan\\HangMan.cpp",
+              "ToolTip": "D:\\HangMan\\HangMan\\HangMan.cpp",
               "RelativeToolTip": "HangMan\\HangMan.cpp",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAgwE0AAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-25T09:44:41.432Z",
               "EditorCaption": ""

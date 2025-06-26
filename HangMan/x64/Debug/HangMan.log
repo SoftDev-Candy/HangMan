@@ -1,4 +1,4 @@
 ﻿  HangMan.cpp
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(22,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(54,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  HangMan.vcxproj -> C:\Users\Swastik.Toprani\source\repos\HangMan\x64\Debug\HangMan.exe
+D:\HangMan\HangMan\HangMan.cpp(24,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\HangMan\HangMan\HangMan.cpp(71,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  HangMan.vcxproj -> D:\HangMan\x64\Debug\HangMan.exe

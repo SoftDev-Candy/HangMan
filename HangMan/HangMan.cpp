@@ -4,7 +4,9 @@
 #include<string>
 #include <ctime> //library for the std::time function 
 
-class Hangman {
+class Hangman 
+{
+
 private:
 
 
@@ -43,6 +45,21 @@ std::string chooseWord()
     return choosenword;
 }
 
+bool checkischarpresent(char guess, char GuessingWord)
+{
+
+    if (guess == GuessingWord)
+    {
+        return true;
+    }
+
+    else
+    {
+        return false;
+    }
+
+}
+
 
 
 int main()
@@ -68,16 +85,32 @@ int main()
     std::cout << "Enter your first character :"; 
     std::cin >> guess;
 
-    for (int i = 0; i < finalwordlength; i++) {
+    for (int i = 0; i < finalwordlength; i++)
+    {
 
-        if (guess == FinalWord[i]){
-            std::cout << "Its the correct letter  " << std::endl;
-            break;
+        bool check = checkischarpresent(guess, FinalWord[i]);
+        if (check == true)
+        {
+
+            std::cout << "The letter is present in the word";
+
         }
-        else {
-            std::cout << "The letter is wrong try again " << std::endl;
-            break;
-      }
+
+        else 
+        {
+           std::cout << "The letter is not present in the word" << std::endl;
+           std::cout << "   _____" << std::endl;
+           std::cout << "  |     |" << std::endl;
+           std::cout << "  |     O" << std::endl;
+           std::cout << "  |" << std::endl;
+           std::cout << "  |" << std::endl;
+           std::cout << "  |" << std::endl;
+           std::cout << "  |" << std::endl;
+
+           break;
+           
+        }
+
     }
 
     
