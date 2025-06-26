@@ -3,6 +3,10 @@
 #include<vector>
 #include<string>
 #include <ctime> //library for the std::time function 
+#include<limits>//for da most useless reqiurement of all time 
+#include<atomic>//I AM ATOMIC💥☢️
+
+std::atomic<bool>stop_IT(false);
 
 class Hangman 
 {
@@ -61,10 +65,8 @@ bool checkischarpresent(char guess, char GuessingWord)
 
 }
 
-
-void wrongAnswer(int attemptNum) {
-
-
+void wrongAnswer(int attemptNum) 
+{
     switch (attemptNum) {
 
     case 5:
@@ -109,7 +111,7 @@ void wrongAnswer(int attemptNum) {
         std::cout << "  |" << std::endl;
         break;
 
-    case 1: 
+    case 1:
         std::cout << "   _____" << std::endl;
         std::cout << "  |     |" << std::endl;
         std::cout << "  |     O" << std::endl;
@@ -129,18 +131,41 @@ void wrongAnswer(int attemptNum) {
         std::cout << "  |" << std::endl;
         break;
 
-
-
-
     }
 
+}
 
+bool checkTheword(std::string guessedword, std::string FinalWord) 
+{
 
+    if (guessedword == FinalWord) 
+    {
+        return true;
+    }
 
-
-
+    return false;
 
 }
+
+
+void printwin()
+{
+    std::cout << "OMG YOU DUN DID IT YOU SAVED THE MAN FROM |THE HANG WHOO WAY TO GO |";
+    std::cout << "THANK YOU FOR WASTING YOUR TIME ";
+    std::cout << "See you NEXT TIME HEHEHEHEHEH []~(￣▽￣)~* ";
+    stop_IT = true;
+
+}
+
+
+void printlose ()
+{
+    std::cout << "OMG YOU KILLED THE MAN FROM HE GOT |THE HANG -ED |";
+    std::cout << "THANK YOU FOR WASTING YOUR TIME YOU KILLED HIM ....I HOPE ITS RUBBING IN RIGHT NOW ....HE -- IS -- DEAD ";
+    std::cout << "See you NEXT TIME  o(≧口≦)o killed him you ******* ********* ****";
+    stop_IT = true;
+}
+
 
 
 int main()
@@ -158,47 +183,79 @@ int main()
 
     std::cout << "Your Word is :"<<std::endl;
 
-    for (int i = 0; i < finalwordlength; i++) {
+    for (int i = 0; i < finalwordlength; i++) 
+    {
        
-        
-        std::cout << " _ "<<FinalWord[i];
+        std::cout << " _ ";
 
     }
+
     std::cout << std::endl;
 
     //TODO : Add the entire above code to a onStartplay
    
-    int num = -1;
-        int attemptnum = 5;
-    while (true)
+    int num = 0;
+    int attemptnum = 0;
+    int hangcount = 5;
+
+    while (!stop_IT)  // the while loop is here //TODO -- Make this into a function.
     {
-        char guess;
-        if (attemptnum == 5)
+        char guess =' ';
+        std::string guessedword = " ";
+        if (attemptnum == 0)
         {
             std::cout << "Enter your first letter: ";
+            std::cin >> guess;
+            attemptnum++;
+
         }
-        else if (attemptnum <4)
+        else if (attemptnum ==1)
         {
-            std::cout << "Are you ready to guess the word "<<std::endl;
+            std::cout << "Enter your second letter: ";
+            std::cin >> guess;
+            attemptnum++;
+        }
+        else if (attemptnum <= 3)
+        {
+            std::cout << "Are you ready to guess the word " << std::endl;
             std::cout << "Enter 1 if you are ready to guess or Enter 2 if you want to continue guessing the letters." << std::endl;
 
-                std::cin >> num;
-                if (num > 2 || num < 1) {
+            std::cin >> num;//single line calls are so hard to track my god ^_____^ this mfer took me 10 mins to find -> HERE IT YOU BLIND **** ******** **** Donut  **** coding *********
+            while (num < 1 || num > 2|| std::cin.fail())
+            {
                 
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     std::cout << "Wrong number try to enter '1' or '2' how hard can it be ." << std::endl;
+                    std::cin >> num;
+                
+            }
 
+            if (num == 1)
+            {
+                std::cout << "You've entered one ..GOOD JOB You know how to read instructions ...unlike some other 'PEOPLE'";
+                std::cin >> guess;
+                attemptnum++;
+            }
 
+            else if (num == 2)
+            {
+                std::cout << "You've entered two ..Guess the word you have one try guess the wrong and the man hangs ";
+                std::cin >> guessedword;
+                bool checkwin = checkTheword(guessedword, FinalWord);
+
+                if (checkwin == true) 
+                {
+                
+                    printwin();
 
                 }
-            {
-            
-            
+
             }
 
         }
 
-        std::cin >> guess;
-
+       
 
         for (int i = 0; i < finalwordlength; i++)
         {
@@ -207,16 +264,21 @@ int main()
             if (check == true)
             {
 
-                std::cout << "The letter is present in the word";
-                attemptnum--;
+                std::cout << "The letter is present in the word" << std::endl;
+                
                 break;
                
             }
 
             else if (check == false && i == finalwordlength-1)
             {
-                wrongAnswer(attemptnum);
-                attemptnum--;
+                if (hangcount == 0)
+                {
+                    printlose();
+                }
+
+                wrongAnswer(hangcount);
+                hangcount--;
 
                 break;
 
@@ -227,7 +289,11 @@ int main()
             }
 
         }
-        
+       
+        if (hangcount == 0) 
+        {
+            printlose();
+        }
 
     }
     
