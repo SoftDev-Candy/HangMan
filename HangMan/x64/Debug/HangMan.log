@@ -5,11 +5,11 @@ C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(155,18): warni
 C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(166,18): warning C4566: character represented by universal-character-name '\u2267' cannot be represented in the current code page (1252)
 C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(166,18): warning C4566: character represented by universal-character-name '\u53E3' cannot be represented in the current code page (1252)
 C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(166,18): warning C4566: character represented by universal-character-name '\u2266' cannot be represented in the current code page (1252)
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(217,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(225,32): warning C4305: 'argument': truncation from 'int' to '_Ty'
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(225,32): warning C4305:         with
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(225,32): warning C4305:         [
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(225,32): warning C4305:             _Ty=char
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(225,32): warning C4305:         ]
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(225,32): warning C4309: 'argument': truncation of constant value
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(214,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(222,32): warning C4305: 'argument': truncation from 'int' to '_Ty'
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(222,32): warning C4305:         with
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(222,32): warning C4305:         [
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(222,32): warning C4305:             _Ty=char
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(222,32): warning C4305:         ]
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(222,32): warning C4309: 'argument': truncation of constant value
   HangMan.vcxproj -> C:\Users\Swastik.Toprani\source\repos\HangMan\x64\Debug\HangMan.exe

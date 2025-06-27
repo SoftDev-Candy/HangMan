@@ -174,17 +174,14 @@ void push_element_in_array(char guess, std::string finalword, std::vector<char>*
     
         if (guess == finalword[i])
         {
-            ptr_printedguess->insert(ptr_printedguess->begin()+i, guess);
+            ptr_printedguess->at(i) = guess;
             
         }
-        else if(std::isalpha(ptr_printedguess->at(i)) != '_')
+        else if(!std::isalpha(ptr_printedguess->at(i)))
         {
-            ptr_printedguess->insert(ptr_printedguess->begin() + i, '_');
+            ptr_printedguess->at(i) = '_';
         }
-        else
-        {
-            continue;
-        }
+      
     
     }
 }
