@@ -5,6 +5,7 @@
 #include <ctime> //library for the std::time function 
 #include<limits>//for da most useless reqiurement of all time 
 #include<atomic>//I AM ATOMIC💥☢️
+#include <cctype> 
 
 std::atomic<bool>stop_IT(false);
 
@@ -51,7 +52,6 @@ std::string chooseWord()
 
 bool checkischarpresent(char guess, char GuessingWord)
 {
-
 
     if (guess == GuessingWord)
     {
@@ -167,6 +167,41 @@ void printlose ()
     stop_IT = true;
 }
 
+void push_element_in_array(char guess, std::string finalword, std::vector<char>* ptr_printedguess, int stringsize) {
+
+    for (int i = 0; i < stringsize; i++)
+    {
+    
+        if (guess == finalword[i])
+        {
+            ptr_printedguess->insert(ptr_printedguess->begin()+i, guess);
+            
+        }
+        else if(std::isalpha(ptr_printedguess->at(i)) != '_')
+        {
+            ptr_printedguess->insert(ptr_printedguess->begin() + i, '_');
+        }
+        else
+        {
+            continue;
+        }
+    
+    }
+}
+
+void print_vector(std::vector<char>* ptr_printedguess , int size) 
+{
+    for (int i = 0; i < size; i++)
+    {
+
+        std::cout << ptr_printedguess->at(i);
+
+    }
+    std::cout << std::endl;
+
+}
+
+
 void onstartplay(){
 
     std::cout << "Welcome to Hangman XoX" << std::endl;
@@ -177,6 +212,7 @@ void onstartplay(){
 
     std::cout << std::endl;
 
+    std::vector<char>printedguess;
     std::string FinalWord = chooseWord(); //need to store this globally maybe in side a class to get global access 
     int finalwordlength = FinalWord.length();//this too-> do the above ＼(ﾟｰﾟ＼)
 
@@ -186,6 +222,7 @@ void onstartplay(){
     {
 
         std::cout << " _ ";
+        printedguess.push_back(' _ ');
 
     }
     std::cout << "The Word has " << finalwordlength << " Characters ,  start guessing The man dingo ,dies in 5 ! ";
@@ -196,7 +233,6 @@ void onstartplay(){
     int num = 0;
     int attemptnum = 0;
     int hangcount = 5;
-    std::vector<char>printedguess;
 
     while (!stop_IT)  // the while loop is here //TODO -- Make this into a function.
     {
@@ -266,7 +302,6 @@ void onstartplay(){
         }
 
 
-
         for (int i = 0; i < finalwordlength; i++) //Checking chars ----  here found it i need to remove these forloops and relapce them with something more readble
         {
 
@@ -275,7 +310,8 @@ void onstartplay(){
             {
                  
                 std::cout << "The letter is present in the word" << std::endl;
-
+                push_element_in_array(guess, FinalWord, &printedguess, finalwordlength);
+                print_vector(&printedguess, finalwordlength);
                 break;
 
             }
@@ -285,8 +321,11 @@ void onstartplay(){
 
                 wrongAnswer(hangcount);
                 hangcount--;
+                
+
                 if (hangcount < 0)
                 {
+                    print_vector(&printedguess, finalwordlength);
                     printlose();
                 }
 
@@ -302,7 +341,9 @@ void onstartplay(){
 
         if (hangcount < 0)
         {
+            print_vector(&printedguess, finalwordlength);
             printlose();
+
         }
 
     }
