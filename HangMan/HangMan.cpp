@@ -196,6 +196,7 @@ void onstartplay(){
     int num = 0;
     int attemptnum = 0;
     int hangcount = 5;
+    std::vector<char>printedguess;
 
     while (!stop_IT)  // the while loop is here //TODO -- Make this into a function.
     {
@@ -266,13 +267,13 @@ void onstartplay(){
 
 
 
-        for (int i = 0; i < finalwordlength; i++)
+        for (int i = 0; i < finalwordlength; i++) //Checking chars ----  here found it i need to remove these forloops and relapce them with something more readble
         {
 
             bool check = checkischarpresent(guess, FinalWord[i]);
             if (check == true)
             {
-
+                 
                 std::cout << "The letter is present in the word" << std::endl;
 
                 break;
@@ -294,7 +295,7 @@ void onstartplay(){
             }
             else
             {
-                continue;  //Dont judge me for this line I already know  ........  stop laughing it is here for visual purpose ಥ_ಥ
+                continue;  //Dont judge me for this line I already know  ........  stop laughing it is here for visual purposes ಥ_ಥ
             }
 
         }
