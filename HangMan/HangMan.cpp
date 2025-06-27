@@ -150,10 +150,11 @@ bool checkTheword(std::string guessedword, std::string FinalWord)
 
 void printwin()
 {
-    std::cout << "OMG YOU DUN DID IT YOU SAVED THE MAN FROM |THE HANG WHOO WAY TO GO |";
-    std::cout << "THANK YOU FOR WASTING YOUR TIME ";
-    std::cout << "See you NEXT TIME HEHEHEHEHEH []~(￣▽￣)~* ";
+    std::cout << "OMG YOU DUN DID IT YOU SAVED THE MAN FROM |THE HANG WHOO WAY TO GO |" << std::endl;
+    std::cout << "THANK YOU FOR WASTING YOUR TIME " << std::endl;
+    std::cout << "See you NEXT TIME HEHEHEHEHEH []~(￣▽￣)~* " << std::endl;
     stop_IT = true;
+
 
 }
 
@@ -161,15 +162,13 @@ void printwin()
 void printlose ()
 {
     std::cout << "OMG YOU KILLED THE MAN FROM HE GOT |THE HANG -ED |";
-    std::cout << "THANK YOU FOR WASTING YOUR TIME YOU KILLED HIM ....I HOPE ITS RUBBING IN RIGHT NOW ....HE -- IS -- DEAD ";
-    std::cout << "See you NEXT TIME  o(≧口≦)o killed him you ******* ********* ****";
+    std::cout << "THANK YOU FOR WASTING YOUR TIME YOU KILLED HIM ....I HOPE ITS RUBBING IN RIGHT NOW ....HE -- IS -- DEAD " << std::endl;
+    std::cout << "See you NEXT TIME  o(≧口≦)o killed him you ******* ********* ****" << std::endl;
     stop_IT = true;
 }
 
+void onstartplay(){
 
-
-int main()
-{
     std::cout << "Welcome to Hangman XoX" << std::endl;
     std::cout << "You have 5 tries to guess the word. Every wrong guess will bring the man closer to | THE HANG | " << std::endl;
     std::cout << "Will you guess right and save the man , OR WILL YOU LET HIM DIE A SLOW GRUESOME DEATH  " << std::endl;
@@ -181,72 +180,82 @@ int main()
     std::string FinalWord = chooseWord(); //need to store this globally maybe in side a class to get global access 
     int finalwordlength = FinalWord.length();//this too-> do the above ＼(ﾟｰﾟ＼)
 
-    std::cout << "Your Word is :"<<std::endl;
+    std::cout << "Your Word is :" << std::endl;
 
-    for (int i = 0; i < finalwordlength; i++) 
+    for (int i = 0; i < finalwordlength; i++)
     {
-       
+
         std::cout << " _ ";
 
     }
-
+    std::cout << "The Word has " << finalwordlength << " Characters ,  start guessing The man dingo ,dies in 5 ! ";
     std::cout << std::endl;
 
     //TODO : Add the entire above code to a onStartplay
-   
+
     int num = 0;
     int attemptnum = 0;
     int hangcount = 5;
 
     while (!stop_IT)  // the while loop is here //TODO -- Make this into a function.
     {
-        char guess =' ';
-        std::string guessedword = " ";
+        char guess = ' ';
+        std::string guessedword;
         if (attemptnum == 0)
         {
-            std::cout << "Enter your first letter: ";
+            std::cout << "Enter your first letter: " << std::endl;
             std::cin >> guess;
             attemptnum++;
 
         }
-        else if (attemptnum ==1)
+        else if (attemptnum == 1)
         {
-            std::cout << "Enter your second letter: ";
+            std::cout << "Enter your second letter: " << std::endl;
             std::cin >> guess;
             attemptnum++;
         }
-        else if (attemptnum <= 3)
+        else if (attemptnum == 2)
+        {
+            std::cout << "Enter your third letter: " << std::endl;
+            std::cin >> guess;
+            attemptnum++;
+        }
+
+        else if (attemptnum >= 3)
         {
             std::cout << "Are you ready to guess the word " << std::endl;
             std::cout << "Enter 1 if you are ready to guess or Enter 2 if you want to continue guessing the letters." << std::endl;
 
             std::cin >> num;//single line calls are so hard to track my god ^_____^ this mfer took me 10 mins to find -> HERE IT YOU BLIND **** ******** **** Donut  **** coding *********
-            while (num < 1 || num > 2|| std::cin.fail())
+            while (num < 1 || num > 2 || std::cin.fail())
             {
-                
-                    std::cin.clear();
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    std::cout << "Wrong number try to enter '1' or '2' how hard can it be ." << std::endl;
-                    std::cin >> num;
-                
+
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Wrong number try to enter '1' or '2' how hard can it be ." << std::endl;
+                std::cin >> num;
+
             }
 
             if (num == 1)
             {
-                std::cout << "You've entered one ..GOOD JOB You know how to read instructions ...unlike some other 'PEOPLE'";
+                std::cout << "You've entered one ..GOOD JOB You know how to read instructions ...unlike some other 'PEOPLE'" << std::endl;
+                std::cout << "Enter the letter: " << std::endl;
                 std::cin >> guess;
                 attemptnum++;
             }
 
             else if (num == 2)
             {
-                std::cout << "You've entered two ..Guess the word you have one try guess the wrong and the man hangs ";
+                std::cout << "You've entered two ..Guess the word you have one try guess the wrong and the man hangs " << std::endl;                
+                std::cout << "Guess the word : " ;
+
                 std::cin >> guessedword;
                 bool checkwin = checkTheword(guessedword, FinalWord);
 
-                if (checkwin == true) 
+                if (checkwin == true)
                 {
-                
+
                     printwin();
 
                 }
@@ -255,7 +264,7 @@ int main()
 
         }
 
-       
+
 
         for (int i = 0; i < finalwordlength; i++)
         {
@@ -265,37 +274,44 @@ int main()
             {
 
                 std::cout << "The letter is present in the word" << std::endl;
-                
+
                 break;
-               
+
             }
 
-            else if (check == false && i == finalwordlength-1)
+            else if (check == false && i == finalwordlength - 1)
             {
-                if (hangcount == 0)
+
+                wrongAnswer(hangcount);
+                hangcount--;
+                if (hangcount < 0)
                 {
                     printlose();
                 }
 
-                wrongAnswer(hangcount);
-                hangcount--;
-
                 break;
 
             }
-            else 
+            else
             {
                 continue;  //Dont judge me for this line I already know  ........  stop laughing it is here for visual purpose ಥ_ಥ
             }
 
         }
-       
-        if (hangcount == 0) 
+
+        if (hangcount < 0)
         {
             printlose();
         }
 
     }
+
+
+}
+
+int main()
+{
+    onstartplay();
     
     return 0;
 

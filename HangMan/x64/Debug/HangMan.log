@@ -2,8 +2,8 @@
 C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(28,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(155,18): warning C4566: character represented by universal-character-name '\uFFE3' cannot be represented in the current code page (1252)
 C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(155,18): warning C4566: character represented by universal-character-name '\u25BD' cannot be represented in the current code page (1252)
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(165,18): warning C4566: character represented by universal-character-name '\u2267' cannot be represented in the current code page (1252)
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(165,18): warning C4566: character represented by universal-character-name '\u53E3' cannot be represented in the current code page (1252)
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(165,18): warning C4566: character represented by universal-character-name '\u2266' cannot be represented in the current code page (1252)
-C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(182,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(166,18): warning C4566: character represented by universal-character-name '\u2267' cannot be represented in the current code page (1252)
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(166,18): warning C4566: character represented by universal-character-name '\u53E3' cannot be represented in the current code page (1252)
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(166,18): warning C4566: character represented by universal-character-name '\u2266' cannot be represented in the current code page (1252)
+C:\Users\Swastik.Toprani\source\repos\HangMan\HangMan\HangMan.cpp(181,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   HangMan.vcxproj -> C:\Users\Swastik.Toprani\source\repos\HangMan\x64\Debug\HangMan.exe
