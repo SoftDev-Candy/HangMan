@@ -7,7 +7,8 @@
 #include<atomic>//I AM ATOMIC💥☢️
 #include <cctype> 
 
-std::atomic<bool>stop_IT(false);
+std::atomic<bool>stop_IT(false); //we could just have it as bool Stop_it = false no need to make it atomic cause we 
+                                //dont have an overhead to worry about
 
 class Hangman 
 {
@@ -23,19 +24,21 @@ public:
 
 };
 
-int random_number(std::string words[],int size)  //random number generator function
+int random_number(int MaxRandomNumber)   //random number generator function
 {
+	//feedback: srand might stay the same if called multiple times in a short period, leading to the same random number being generated.
+    //can use srand(static_cast<unsigned int>(time(0))) so we only seed once 
+    std::srand(static_cast<unsigned int>(std::time(0))); //takes the current time as the base value to make the number truely random 	
 
-    std::srand(std::time({})); //takes the current time as the base value to make the number truely random
-    const int randomNum = std::rand() % size;
-    
+    const int randomNum = std::rand() % MaxRandomNumber;
+	//feedback: using % MaxRandomNumber ensures the random number is within the bounds of the array
     return randomNum;
 }
 
-std::string chooseWord()
+const std::string& chooseWord() //make a function const if you are not changing any value again 
 {
 
-    std::string words[] =
+   static std::string words[] =    
     {
     "apple", "banana", "computer", "pencil", "guitar", "elephant",
     "mountain", "school", "window", "keyboard", "pirate", "jungle",
@@ -44,26 +47,29 @@ std::string chooseWord()
     };
 
     int words_size = sizeof(words) / sizeof(words[0]);
-    int random_num = random_number(words, words_size);
-    std::string choosenword = words[random_num];
+    int random_num = random_number(words_size);
+    const std::string& choosenword = words[random_num];
 
     return choosenword;
 }
 
-bool checkischarpresent(char guess, char GuessingWord)
-{
+//Feedback: Dont actually require this .As we are just comparing two chars instead we can just add 
+// bool check = guess == FinalWord[i]; Problem fixed smart solution
 
-    if (guess == GuessingWord)
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
-
-}
+//bool checkischarpresent(char guess, char GuessingWord)  
+//{
+//
+//    if (guess == GuessingWord)
+//    {
+//        return true;
+//    }
+//
+//    else
+//    {
+//        return false;
+//    }
+//
+//}
 
 void wrongAnswer(int attemptNum) 
 {
@@ -135,17 +141,20 @@ void wrongAnswer(int attemptNum)
 
 }
 
-bool checkTheword(std::string guessedword, std::string FinalWord) 
-{
+//Same thing as before ! Although feedback! 
+//Feedback : use const and & as we are not making any changes to it 
 
-    if (guessedword == FinalWord) 
-    {
-        return true;
-    }
-
-    return false;
-
-}
+//bool checkTheword(std::string guessedword, std::string FinalWord) 
+//{
+//
+//    if (guessedword == FinalWord) 
+//    {
+//        return true;
+//    }
+//
+//    return false;
+//
+//}
 
 
 void printwin()
@@ -161,37 +170,38 @@ void printwin()
 
 void printlose ()
 {
-    std::cout << "OMG YOU KILLED THE MAN FROM HE GOT |THE HANG -ED |";
+    std::cout << "OMG YOU KILLED THE MAN FROM HE GOT |THE HANG -ED |" << std::endl;
     std::cout << "THANK YOU FOR WASTING YOUR TIME YOU KILLED HIM ....I HOPE ITS RUBBING IN RIGHT NOW ....HE -- IS -- DEAD " << std::endl;
     std::cout << "See you NEXT TIME  o(≧口≦)o killed him you ******* ********* ****" << std::endl;
     stop_IT = true;
 }
 
-void push_element_in_array(char guess, std::string finalword, std::vector<char>* ptr_printedguess, int stringsize) {
-
-    for (int i = 0; i < stringsize; i++)
+void push_element_in_array(char guess, const std::string& finalword, std::vector<char>& ptr_printedguess) //no need for string 
+{
+     
+    for (int i = 0; i < finalword.size(); i++)
     {
     
         if (guess == finalword[i])
         {
-            ptr_printedguess->at(i) = guess;
+            ptr_printedguess.at(i) = guess;
             
         }
-        else if(!std::isalpha(ptr_printedguess->at(i)))
-        {
-            ptr_printedguess->at(i) = '_';
-        }
+        //else if(!std::isalpha(ptr_printedguess->at(i)))//useless check
+        //{
+        //    //ptr_printedguess->at(i) = '_';
+        //}
       
     
     }
 }
 
-void print_vector(std::vector<char>* ptr_printedguess , int size) 
+void print_vector(std::vector<char>& ptr_printedguess ) 
 {
-    for (int i = 0; i < size; i++)
+    for (char i:ptr_printedguess)
     {
 
-        std::cout << ptr_printedguess->at(i);
+        std::cout <<i;
 
     }
     std::cout << std::endl;
@@ -211,6 +221,7 @@ void onstartplay(){
 
     std::vector<char>printedguess;
     std::string FinalWord = chooseWord(); //need to store this globally maybe in side a class to get global access 
+    std::cout << FinalWord;
     int finalwordlength = FinalWord.length();//this too-> do the above ＼(ﾟｰﾟ＼)
 
     std::cout << "Your Word is :" << std::endl;
@@ -219,7 +230,7 @@ void onstartplay(){
     {
 
         std::cout << " _ ";
-        printedguess.push_back(' _ ');
+        printedguess.push_back('_');
 
     }
     std::cout << "The Word has " << finalwordlength << " Characters ,  start guessing The man dingo ,dies in 5 ! ";
@@ -285,7 +296,7 @@ void onstartplay(){
                 std::cout << "Guess the word : " ;
 
                 std::cin >> guessedword;
-                bool checkwin = checkTheword(guessedword, FinalWord);
+                bool checkwin = (guessedword == FinalWord);
 
                 if (checkwin == true)
                 {
@@ -302,18 +313,18 @@ void onstartplay(){
         for (int i = 0; i < finalwordlength; i++) //Checking chars ----  here found it i need to remove these forloops and relapce them with something more readble
         {
 
-            bool check = checkischarpresent(guess, FinalWord[i]);
-            if (check == true)
+            bool isPresent = (guess == FinalWord[i]);
+            if (isPresent)
             {
                  
                 std::cout << "The letter is present in the word" << std::endl;
-                push_element_in_array(guess, FinalWord, &printedguess, finalwordlength);
-                print_vector(&printedguess, finalwordlength);
+                push_element_in_array(guess, FinalWord, printedguess);
+                print_vector(printedguess);
                 break;
 
             }
 
-            else if (check == false && i == finalwordlength - 1)
+            else if (isPresent == false && i == finalwordlength - 1)
             {
 
                 wrongAnswer(hangcount);
@@ -322,7 +333,7 @@ void onstartplay(){
 
                 if (hangcount < 0)
                 {
-                    print_vector(&printedguess, finalwordlength);
+                    print_vector(printedguess);
                     printlose();
                 }
 
@@ -338,7 +349,7 @@ void onstartplay(){
 
         if (hangcount < 0)
         {
-            print_vector(&printedguess, finalwordlength);
+            print_vector(printedguess);
             printlose();
 
         }
