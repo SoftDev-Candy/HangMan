@@ -7,29 +7,13 @@
 #include<atomic>//I AM ATOMIC💥☢️
 #include <cctype> 
 
-std::atomic<bool>stop_IT(false); //we could just have it as bool Stop_it = false no need to make it atomic cause we 
+bool stop_IT(false); //we could just have it as bool Stop_it = false no need to make it atomic cause we 
                                 //dont have an overhead to worry about
 
-class Hangman 
-{
-
-private:
-
-
-
-
-public:
-    
-
-
-};
 
 int random_number(int MaxRandomNumber)   //random number generator function
 {
-	//feedback: srand might stay the same if called multiple times in a short period, leading to the same random number being generated.
-    //can use srand(static_cast<unsigned int>(time(0))) so we only seed once 
-    std::srand(static_cast<unsigned int>(std::time(0))); //takes the current time as the base value to make the number truely random 	
-
+	
     const int randomNum = std::rand() % MaxRandomNumber;
 	//feedback: using % MaxRandomNumber ensures the random number is within the bounds of the array
     return randomNum;
@@ -240,7 +224,8 @@ void onstartplay(){
 
     int num = 0;
     int attemptnum = 0;
-    int hangcount = 5;
+    constexpr int MaxAttempts = 5;
+    int hangcount = MaxAttempts;
 
     while (!stop_IT)  // the while loop is here //TODO -- Make this into a function.
     {
@@ -361,6 +346,14 @@ void onstartplay(){
 
 int main()
 {
+    
+    //feedback: srand might stay the same if called multiple times in a short period,
+    // leading to the same random number being generated.
+    // Add to main so its called once every second
+    //can use srand(static_cast<unsigned int>(time(0))) so we only seed once 
+    std::srand(static_cast<unsigned int>(std::time(0))); //takes the current time as the base value to make the number truely random 	
+   
+
     onstartplay();
     
     return 0;
